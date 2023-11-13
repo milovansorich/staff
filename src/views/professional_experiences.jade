@@ -1,0 +1,51 @@
+doctype html
+html.h-full.bg-white
+  head
+    title= title
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel='stylesheet', href='/stylesheets/style.css')
+ body.h-full
+    .mx-auto.max-w-7xl.px-4.py-24(class='sm:px-6 sm:py-12 lg:px-8')
+        .mx-auto.max-w-2xl
+            div
+                h1.text-3xl.font-bold.tracking-tight.text-gray-900 Experiencia laboral
+            form(action='/professional-experiences', method='POST')
+                .space-y-12
+                    .border-b.pb-12(class='border-gray-900/10')
+                        p.mt-1.text-sm.leading-6.text-gray-600 Esta información debe ser verídica para procesar posteriormente tu postulación.
+                            .mt-10.grid.grid-cols-1.gap-x-6.gap-y-8(class='sm:grid-cols-6')
+                                .col-span-full
+                                    label.block.text-sm.font-medium.leading-6.text-gray-900(for='job-tittle') Titulo profesional
+                                    .mt-2
+                                        input(type="text")#job-tittle.block.w-full.rounded-md.border-0.text-gray-900.shadow-sm.ring-1.ring-inset.ring-gray-300(name='jobTittle' rows='3' class='py-1.5 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6')
+
+                    .border-b.pb-12(class='border-gray-900/10')
+                        h2.text-base.font-semibold.leading-7.text-gray-900 Trabajos
+                        p.mt-1.text-sm.leading-6.text-gray-600 Usa una dirección de correo electrónico permanente para enviarte correos.
+                        .mt-10.grid.grid-cols-1.gap-x-6.gap-y-8(class='sm:grid-cols-6')
+                            
+                            .mt-1(class='sm:col-span-4')
+                                label.block.text-sm.font-medium.leading-6.text-gray-900(for='business-name') Nombre de la empresa
+                                .mt-2
+                                    input#business-name.block.w-full.rounded-md.border-0.text-gray-900.shadow-sm.ring-1.ring-inset.ring-gray-300(type='text' name='businessName' autocomplete='businessName' class='py-1.5 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6')
+                            .mt-1(class='sm:col-span-3')
+                                label.block.text-sm.font-medium.leading-6.text-gray-900(for='entry-date') Fecha de entrada
+                                .mt-2
+                                    input#entry-date.block.w-full.rounded-md.border-0.text-gray-900.shadow-sm.ring-1.ring-inset.ring-gray-300(type='date' name='entryDate' autocomplete='entryDate' class='py-1.5 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6')
+                            .mt-1(class='sm:col-span-3')
+                                label.block.text-sm.font-medium.leading-6.text-gray-900(for='departure-date') Fecha de salida
+                                .mt-2
+                                    input#departure-date.block.w-full.rounded-md.border-0.text-gray-900.shadow-sm.ring-1.ring-inset.ring-gray-300(type='date' name='departureDate' autocomplete='departureDate' class='py-1.5 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6')
+                            .mt-1(class='sm:col-span-4')
+                                label.block.text-sm.font-medium.leading-6.text-gray-900(for='position') nombre del cargo
+                                .mt-2
+                                    input#position.block.w-full.rounded-md.border-0.text-gray-900.shadow-sm.ring-1.ring-inset.ring-gray-300(type='text' name='position' autocomplete='position' class='py-1.5 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6')
+                            .mt-1(class='sm:col-span-4')
+                                label.block.text-sm.font-medium.leading-6.text-gray-900(for='job-description') Descripcion del cargo
+                                .mt-2
+                                textarea#job-description.block.w-full.rounded-md.border-0.text-gray-900.shadow-sm.ring-1.ring-inset.ring-gray-300(name='jobDescription' rows='3' class='py-1.5 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6' ) #{about}
+                            
+                .mt-6.flex.items-center.justify-end.gap-x-6
+                    button.text-sm.font-semibold.leading-6.text-gray-900(type='submit') Cancelar
+                    button.rounded-md.bg-indigo-600.px-3.py-2.text-sm.font-semibold.text-white.shadow-sm(type='submit' class='hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600') Guardar

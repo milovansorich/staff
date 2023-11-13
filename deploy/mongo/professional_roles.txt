@@ -1,0 +1,6 @@
+db.professional_roles.insertMany([
+    {name: "Backend", languages: ['Java', 'Python', 'Ruby', 'Php'], libraries: ['SpringBoot'], databases: ['Mysql', 'Oracle', 'MongoDb', 'MariaDb']},
+    {name: "Frontend", languages: ['Javascript', 'Java', 'Ruby', 'Php' ], libraries: ['Express', 'React', 'Vaadin', 'Vue']},
+]);
+
+

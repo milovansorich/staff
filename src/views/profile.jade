@@ -1,0 +1,158 @@
+extends layout
+
+block content
+  header.bg-white.shadow
+        .mx-auto.max-w-7xl.px-4.py-6(class='sm:px-6 lg:px-8')
+          h1.text-3xl.font-bold.tracking-tight.text-gray-900 Mi perfil
+          .mx-auto.max-w-7xl.px-4.py-24(class='sm:px-6 sm:py-12 lg:px-8')
+            form(action='/profile', method='POST')
+                .space-y-12
+                    .border-b.pb-12(class='border-gray-900/10')
+                        p.mt-1.text-sm.leading-6.text-gray-600 Esta información debe ser verídica para procesar posteriormente tu postulación.
+                            .mt-10.grid.grid-cols-1.gap-x-6.gap-y-8(class='sm:grid-cols-6')
+                                .col-span-full
+                                    label.block.text-sm.font-medium.leading-6.text-gray-900(for='about') Sobre ti
+                                    .mt-2
+                                        - about = personalInformation.about
+                                        textarea#about.block.w-full.rounded-md.border-0.text-gray-900.shadow-sm.ring-1.ring-inset.ring-gray-300(name='about' rows='3' class='py-1.5 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6' ) #{about}
+                                    p.mt-3.text-sm.leading-6.text-gray-600 Escribe acerca de ti mismo como profesional.
+                                .col-span-ful
+                    .border-b.pb-12(class='border-gray-900/10')
+                        h2.text-base.font-semibold.leading-7.text-gray-900 Información Personal
+                        p.mt-1.text-sm.leading-6.text-gray-600 Usa una dirección de correo electrónico permanente para enviarte correos.
+                        .mt-10.grid.grid-cols-1.gap-x-6.gap-y-8(class='sm:grid-cols-6')
+                            .mt-1(class='sm:col-span-3')
+                                label.block.text-sm.font-medium.leading-6.text-gray-900(for='first-name') Primer nombre
+                                .mt-2
+                                    - firstName = personalInformation.firstName
+                                    input#first-name.block.w-full.rounded-md.border-0.text-gray-900.shadow-sm.ring-1.ring-inset.ring-gray-300(type='text' name='firstName' autocomplete='given-name' class='py-1.5 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6' value=firstName)
+                            .mt-1(class='sm:col-span-3')
+                                label.block.text-sm.font-medium.leading-6.text-gray-900(for='last-name') Primer apellido
+                                .mt-2
+                                     - lastName = personalInformation.lastName
+                                    input#last-name.block.w-full.rounded-md.border-0.text-gray-900.shadow-sm.ring-1.ring-inset.ring-gray-300(type='text' name='lastName' autocomplete='family-name' class='py-1.5 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6' value=lastName)
+                            .mt-1(class='sm:col-span-3')
+                                label.block.text-sm.font-medium.leading-6.text-gray-900(for='birthdate') Fecha de nacimiento
+                                .mt-2
+                                     - birthdate = personalInformation.birthdate
+                                    input#birthdate.block.w-full.rounded-md.border-0.text-gray-900.shadow-sm.ring-1.ring-inset.ring-gray-300(type='date' name='birthdate' autocomplete='birthdate' class='py-1.5 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6' value=birthdate) 
+                            .mt-1(class='sm:col-span-4')
+                                label.block.text-sm.font-medium.leading-6.text-gray-900(for='email') Correo electrónico
+                                .mt-2
+                                     - email = personalInformation.email
+                                    input#email.block.w-full.rounded-md.border-0.text-gray-900.shadow-sm.ring-1.ring-inset.ring-gray-300(name='email' type='email' autocomplete='email' class='py-1.5 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6' value=email)
+                            .mt-1(class='sm:col-span-4')
+                                label.block.text-sm.font-medium.leading-6.text-gray-900(for='email') Contraseña
+                                .mt-2
+                                    input#email.block.w-full.rounded-md.border-0.text-gray-900.shadow-sm.ring-1.ring-inset.ring-gray-300(name='password' type='password' autocomplete='password' class='py-1.5 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6')
+                            .mt-1(class='sm:col-span-3')
+                                label.block.text-sm.font-medium.leading-6.text-gray-900(for='country') Pais
+                                .mt-2
+                                    - country = personalInformation.country
+                                    - val1 = ('Argentina'==country) ? 'selected' : null;
+                                    - val2 = ('Bolivia'==country) ? 'selected' : null;
+                                    - val3 = ('Chile'==country) ? 'selected' : null;
+                                    - val4 = ('Perú'==country) ? 'selected' : null;
+                                    select#country.block.w-full.rounded-md.border-0.text-gray-900.shadow-sm.ring-1.ring-inset.ring-gray-300(name='country' autocomplete='countryName' class='py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6')
+                                        option(value='Argentina' selected=val1) Argentina
+                                        option(value='Bolivia' selected=val2) Bolivia
+                                        option(value='Chile' selected=val3) Chile
+                                        option(value='Perú' selected=val4) Perú
+                            .mt-1(class='sm:col-span-2 sm:col-start-1')
+                                label.block.text-sm.font-medium.leading-6.text-gray-900(for='city') Ciudad
+                                .mt-2
+                                     - city = personalInformation.city
+                                    input#city.block.w-full.rounded-md.border-0.text-gray-900.shadow-sm.ring-1.ring-inset.ring-gray-300(type='text' name='city' autocomplete='city-address' class='py-1.5 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6' value=city)
+                            .mt-1(class='sm:col-span-2')
+                                label.block.text-sm.font-medium.leading-6.text-gray-900(for='region') Estado / Provincia
+                                .mt-2
+                                     - region = personalInformation.region
+                                    input#region.block.w-full.rounded-md.border-0.text-gray-900.shadow-sm.ring-1.ring-inset.ring-gray-300(type='text' name='region' autocomplete='region-address' class='py-1.5 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6' value=region)
+                            .col-span-full
+                                label.block.text-sm.font-medium.leading-6.text-gray-900(for='street-address') Dirección
+                                .mt-2
+                                     - street = personalInformation.street
+                                    input#street-address.block.w-full.rounded-md.border-0.text-gray-900.shadow-sm.ring-1.ring-inset.ring-gray-300(type='text' name='street' autocomplete='street-address' class='py-1.5 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6' value=street)
+ 
+                    
+                    
+                    for role in roles       
+                        .border-b.pb-12(class='border-gray-900/10')
+                            h2.text-base.font-semibold.leading-7.text-gray-900 #{role.name}
+                            p.mt-1.text-sm.leading-6.text-gray-600
+                                | Selecciona cada una de tus habilidades e indica el nivel en el que estás.
+                            .mt-10.space-y-10
+                                fieldset
+                                    legend.text-sm.font-semibold.leading-6.text-gray-900 Lenguajes de Programación
+                                    .mt-6.space-y-6
+                                        for language in role.languages
+                                            .relative.flex.gap-x-3
+                                                .flex.h-6.items-center
+                                                .text-sm.leading-6
+                                                    label.font-medium.text-gray-900(for='comments') #{language}
+                                                    - var inputLanguage = role.name+"Lang"+language
+                                                    - value = professionalInformation[role.name].languages[language]
+                                                    - val1 = ('1'==value) ? 'selected' : null;
+                                                    - val2 = ('2'==value) ? 'selected' : null;
+                                                    - val3 = ('3'==value) ? 'selected' : null;
+                                                    - val4 = ('4'==value) ? 'selected' : null;
+                                                    - val5 = ('5'==value) ? 'selected' : null;
+                                                   
+                                                    select.block.w-full.rounded-md.border-0.text-gray-900.shadow-sm.ring-1.ring-inset.ring-gray-300(name=inputLanguage class='py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6' value=value)
+                                                        option(value='1' selected=val1) 1
+                                                        option(value='2' selected=val2) 2
+                                                        option(value='3' selected=val3) 3
+                                                        option(value='4' selected=val4) 4
+                                                        option(value='5' selected=val5) 5
+                                         
+                            .mt-10.space-y-10
+                                fieldset
+                                    legend.text-sm.font-semibold.leading-6.text-gray-900 Librerías
+                                    .mt-6.space-y-6
+                                        for library in role.libraries
+                                            .relative.flex.gap-x-3
+                                                .flex.h-6.items-center
+                                                .text-sm.leading-6
+                                                    label.font-medium.text-gray-900(for='comments') #{library}
+                                                    - var inputLibrary = role.name+"Lib"+library
+                                                    - value = professionalInformation[role.name].libraries[library]
+                                                    - val1 = ('1'==value) ? 'selected' : null;
+                                                    - val2 = ('2'==value) ? 'selected' : null;
+                                                    - val3 = ('3'==value) ? 'selected' : null;
+                                                    - val4 = ('4'==value) ? 'selected' : null;
+                                                    - val5 = ('5'==value) ? 'selected' : null;
+                                                    select.block.w-full.rounded-md.border-0.text-gray-900.shadow-sm.ring-1.ring-inset.ring-gray-300(name=inputLibrary class='py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6')
+                                                        option(value='1' selected=val1) 1
+                                                        option(value='2' selected=val2) 2
+                                                        option(value='3' selected=val3) 3
+                                                        option(value='4' selected=val4) 4
+                                                        option(value='5' selected=val5) 5
+
+                .border-b.pb-12(class='border-gray-900/10')
+                    h2.text-base.font-semibold.leading-9.text-gray-800 Experiencia laboral
+                    p.mt-1.text-sm.leading-6.text-gray-600
+                     | lista de trabajos.
+                ul.divide-y.divide-gray-100(role='list')
+                  for experience in experiences
+                      li.flex.justify-between.gap-x-6.py-5
+                          .flex.min-w-0.gap-x-4
+                            img.h-12.w-12.flex-none.rounded-full.bg-gray-50(src='https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80' alt='')
+                          .min-w-0.flex-auto
+                            p.text-sm.font-semibold.leading-6.text-gray-900 Nombre de la empresa: #{experience.businessName} 
+                            p.mt-1.truncate.text-xs.leading-5.text-gray-500 duracion: #{experience.entryDate} - #{experience.departureDate}
+                            p.mt-1.truncate.text-xs.leading-5.text-gray-500 descripcion del cargo: #{experience.jobDescription}
+                          .hidden.shrink-0(class='sm:flex sm:flex-col sm:items-end')
+                            p.text-sm.leading-6.text-gray-900 titulo del trabajo: #{experience.jobTittle}
+                            p.mt-1.text-xs.leading-5.text-gray-500                                        
+
+                
+                .m-6.flex.items-center.justify-end.gap-x-6
+                    button.rounded-md.bg-indigo-600.px-3.py-2.text-sm.font-semibold.text-white.shadow-sm(type='button' onclick="window.location.href=\'http://localhost:3000/professional-experiences\';" class='hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600') Agregar experiencia laboral
+
+                if role != null      
+                    .m-6.flex.items-center.justify-end.gap-x-6
+                        button.text-sm.font-semibold.leading-6.text-gray-900(type='submit') Cancelar
+                        button.rounded-md.bg-indigo-600.px-3.py-2.text-sm.font-semibold.text-white.shadow-sm(type='submit' class='hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600') Actualizar
+                else 
+                    .m-6.flex.items-center.justify-end.gap-x-6      
+                        button.rounded-md.bg-indigo-600.px-3.py-2.text-sm.font-semibold.text-white.shadow-sm(type='button' onclick="history.back()" class='hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600') < Volver  

@@ -1,0 +1,113 @@
+doctype html
+html.h-full.bg-white
+  head
+    title= title
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel='stylesheet', href='/stylesheets/style.css')
+ body.h-full
+    .mx-auto.max-w-7xl.px-4.py-24(class='sm:px-6 sm:py-12 lg:px-8')
+        .mx-auto.max-w-2xl
+            div
+                h1.text-3xl.font-bold.tracking-tight.text-gray-900 Registrate con nosotros
+            form(action='/signin', method='POST')
+                .space-y-12
+                    .border-b.pb-12(class='border-gray-900/10')
+                        p.mt-1.text-sm.leading-6.text-gray-600 Esta información debe ser verídica para procesar posteriormente tu postulación.
+                            .mt-10.grid.grid-cols-1.gap-x-6.gap-y-8(class='sm:grid-cols-6')
+                                .col-span-full
+                                    label.block.text-sm.font-medium.leading-6.text-gray-900(for='about') Sobre ti
+                                    .mt-2
+                                        textarea#about.block.w-full.rounded-md.border-0.text-gray-900.shadow-sm.ring-1.ring-inset.ring-gray-300(name='about' rows='3' class='py-1.5 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6')
+                                    p.mt-3.text-sm.leading-6.text-gray-600 Escribe acerca de ti mismo como profesional.
+                                .col-span-full
+                    .border-b.pb-12(class='border-gray-900/10')
+                        h2.text-base.font-semibold.leading-7.text-gray-900 Información Personal
+                        p.mt-1.text-sm.leading-6.text-gray-600 Usa una dirección de correo electrónico permanente para enviarte correos.
+                        .mt-10.grid.grid-cols-1.gap-x-6.gap-y-8(class='sm:grid-cols-6')
+                            .mt-1(class='sm:col-span-3')
+                                label.block.text-sm.font-medium.leading-6.text-gray-900(for='first-name') Primer nombre
+                                .mt-2
+                                    input#first-name.block.w-full.rounded-md.border-0.text-gray-900.shadow-sm.ring-1.ring-inset.ring-gray-300(type='text' name='firstName' autocomplete='given-name' class='py-1.5 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6')
+                            .mt-1(class='sm:col-span-3')
+                                label.block.text-sm.font-medium.leading-6.text-gray-900(for='last-name') Primer apellido
+                                .mt-2
+                                    input#last-name.block.w-full.rounded-md.border-0.text-gray-900.shadow-sm.ring-1.ring-inset.ring-gray-300(type='text' name='lastName' autocomplete='family-name' class='py-1.5 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6')
+                            .mt-1(class='sm:col-span-3')
+                                label.block.text-sm.font-medium.leading-6.text-gray-900(for='birthdate') Fecha de nacimiento
+                                .mt-2
+                                    input#birthdate.block.w-full.rounded-md.border-0.text-gray-900.shadow-sm.ring-1.ring-inset.ring-gray-300(type='date' name='birthdate' autocomplete='birthdate' class='py-1.5 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6')
+                            .mt-1(class='sm:col-span-4')
+                                label.block.text-sm.font-medium.leading-6.text-gray-900(for='email') Correo electrónico
+                                .mt-2
+                                    input#email.block.w-full.rounded-md.border-0.text-gray-900.shadow-sm.ring-1.ring-inset.ring-gray-300(name='email' type='email' autocomplete='email' class='py-1.5 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6')
+                            .mt-1(class='sm:col-span-4')
+                                label.block.text-sm.font-medium.leading-6.text-gray-900(for='password') Contraseña
+                                .mt-2
+                                    input#password.block.w-full.rounded-md.border-0.text-gray-900.shadow-sm.ring-1.ring-inset.ring-gray-300(name='password' type='password' autocomplete='password' class='py-1.5 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6')
+                            .mt-1(class='sm:col-span-3')
+                                label.block.text-sm.font-medium.leading-6.text-gray-900(for='country') Pais
+                                .mt-2
+                                    select#country.block.w-full.rounded-md.border-0.text-gray-900.shadow-sm.ring-1.ring-inset.ring-gray-300(name='country' autocomplete='countryName' class='py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6')
+                                        option Argentina
+                                        option Bolivia
+                                        option Chile
+                                        option Perú
+                            .mt-1(class='sm:col-span-2 sm:col-start-1')
+                                label.block.text-sm.font-medium.leading-6.text-gray-900(for='city') Ciudad
+                                .mt-2
+                                    input#city.block.w-full.rounded-md.border-0.text-gray-900.shadow-sm.ring-1.ring-inset.ring-gray-300(type='text' name='city' autocomplete='city-address' class='py-1.5 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6')
+                            .mt-1(class='sm:col-span-2')
+                                label.block.text-sm.font-medium.leading-6.text-gray-900(for='region') Estado / Provincia
+                                .mt-2
+                                    input#region.block.w-full.rounded-md.border-0.text-gray-900.shadow-sm.ring-1.ring-inset.ring-gray-300(type='text' name='region' autocomplete='region-address' class='py-1.5 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6')
+                            .col-span-full
+                                label.block.text-sm.font-medium.leading-6.text-gray-900(for='street-address') Dirección
+                                .mt-2
+                                    input#street-address.block.w-full.rounded-md.border-0.text-gray-900.shadow-sm.ring-1.ring-inset.ring-gray-300(type='text' name='street' autocomplete='street-address' class='py-1.5 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6')
+
+                    
+                    for role in roles       
+                        .border-b.pb-12(class='border-gray-900/10')
+                            h2.text-base.font-semibold.leading-7.text-gray-900 #{role.name}
+                            p.mt-1.text-sm.leading-6.text-gray-600
+                                | Selecciona cada una de tus habilidades e indica el nivel en el que estás.
+                            .mt-10.space-y-10
+                                fieldset
+                                    legend.text-sm.font-semibold.leading-6.text-gray-900 Lenguajes de Programación
+                                    .mt-6.space-y-6
+                                        for language in role.languages
+                                            .relative.flex.gap-x-3
+                                                .flex.h-6.items-center
+                                                .text-sm.leading-6
+                                                    label.font-medium.text-gray-900(for='comments') #{language}
+                                                    - var inputLanguage = role.name+"Lang"+language
+                                                    select.block.w-full.rounded-md.border-0.text-gray-900.shadow-sm.ring-1.ring-inset.ring-gray-300(name=inputLanguage class='py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6')
+                                                        option 1
+                                                        option 2
+                                                        option 3
+                                                        option 4
+                                                        option 5
+                                         
+                            .mt-10.space-y-10
+                                fieldset
+                                    legend.text-sm.font-semibold.leading-6.text-gray-900 Librerías
+                                    .mt-6.space-y-6
+                                        for library in role.libraries
+                                            .relative.flex.gap-x-3
+                                                .flex.h-6.items-center
+                                                .text-sm.leading-6
+                                                    label.font-medium.text-gray-900(for='comments') #{library}
+                                                    - var inputLibrary = role.name+"Lib"+library
+                                                    select.block.w-full.rounded-md.border-0.text-gray-900.shadow-sm.ring-1.ring-inset.ring-gray-300(name=inputLibrary class='py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6')
+                                                        option 1
+                                                        option 2
+                                                        option 3
+                                                        option 4
+                                                        option 5
+                                                      
+                                        
+                            
+                .mt-6.flex.items-center.justify-end.gap-x-6
+                    button.text-sm.font-semibold.leading-6.text-gray-900(type='submit') Cancelar
+                    button.rounded-md.bg-indigo-600.px-3.py-2.text-sm.font-semibold.text-white.shadow-sm(type='submit' class='hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600') Crear mi perfil

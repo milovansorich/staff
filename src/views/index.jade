@@ -1,0 +1,44 @@
+extends layout
+
+block content
+  header.bg-white.shadow
+        .mx-auto.max-w-7xl.px-4.py-6(class='sm:px-6 lg:px-8')
+          h1.text-3xl.font-bold.tracking-tight.text-gray-900 Ofertas de trabajo
+          if role == 'admin'
+            .m-6.flex.items-center.justify-end.gap-x-6
+              form(action='/jobs/new', method='GET')
+                button.rounded-md.bg-indigo-600.px-3.py-2.text-sm.font-semibold.text-white.shadow-sm(type='submit' class='hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600') Crear puesto
+          
+          ul.divide-y.divide-gray-100(role='list')
+            for job in jobs
+              li.flex.justify-between.gap-x-6.py-5
+                .flex.min-w-0.gap-x-4
+                  img.h-12.w-12.flex-none.rounded-full.bg-gray-50(src='https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80' alt='')
+                  .min-w-0.flex-auto
+                    p.text-sm.font-semibold.leading-6.text-gray-900 #{job.title}
+                    p.mt-1.truncate.text-xs.leading-5.text-gray-500 #{job.role}
+                    - applicants = job.applicants === undefined ? 0 : job.applicants.length
+                    p.mt-1.truncate.text-xs.leading-5.text-gray-500 #{applicants} postulaciones
+                .hidden.shrink-0(class='sm:flex sm:flex-col sm:items-end')
+                  p.text-sm.leading-6.text-gray-900 #{job.salary} $CLP 
+                  p.mt-1.text-xs.leading-5.text-gray-500
+                    div
+                      - var route = '/login'
+                      if role != undefined && role == 'applicant'
+                        - route = '/jobs/'+job.code 
+                        - method = 'GET'
+                      if role != undefined && role == 'admin'
+                        - route = '/jobs/delete/'+job.code    
+                        - method = 'POST'
+                      form(action=route method=method)
+                        div.inline-flex.gap-2
+                          if role != undefined && role == 'admin'
+                            if job.applicants != undefined && job.applicants.length > 0  
+                              button.flex.w-full.justify-center.rounded-md.bg-indigo-600.px-3.text-sm.font-semibold.leading-6.text-white.shadow-sm(type='button' onclick='window.location.href=\'http://localhost:3000/ranking/'+job.code+'\';' class='py-1.5 hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600') Ranking
+                            button.flex.w-full.justify-center.rounded-md.bg-indigo-600.px-3.text-sm.font-semibold.leading-6.text-white.shadow-sm(type='button' onclick='window.location.href=\'http://localhost:3000/jobs/'+job.code+'\';' class='py-1.5 hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600') Editar
+                            button.flex.w-full.justify-center.rounded-md.bg-red-600.px-3.text-sm.font-semibold.leading-6.text-white.shadow-sm(type='submit' class='py-1.5 hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600') Eliminar
+                          else 
+                            button.flex.w-full.justify-center.rounded-md.bg-indigo-600.px-3.text-sm.font-semibold.leading-6.text-white.shadow-sm(type='submit' class='py-1.5 hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600') Lo quiero!
+
+
+           

@@ -1,0 +1,21 @@
+# para subir servicio mongo
+docker compose -f ./deploy/docker/mongodb.compose.yaml up -d
+
+# para bajar servicio mongo
+docker compose -f ./deploy/docker/mongodb.compose.yaml down
+
+# para crear el usuario staff, abrir una terminal en servicio mongo en docker desktop
+mongosh mongosh --port 27017 -u "mongo" --authenticationDatabase "admin" -p
+
+# una vez logueado, debemos seleccionar la bd staff:
+use staff;
+
+# para convertir html a formato jade
+https://html2jade.org
+https://naltatis.github.io/jade-syntax-docs/#for
+
+
+titulo del cargo 
+año mes desde ahasta año mes fecha desde y hasta 
+nombre de la empresa (istitucion)
+desempeño (que hizo)
