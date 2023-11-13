@@ -3,4 +3,10 @@ db.professional_roles.insertMany([
     {name: "Frontend", languages: ['Javascript', 'Java', 'Ruby', 'Php' ], libraries: ['Express', 'React', 'Vaadin', 'Vue']},
 ]);
 
+db.users.insertOne({
+    email: 'admin@admin.com',
+    password: 'admin',
+    type: 'admin'
+});
+
 
